@@ -17,7 +17,9 @@ app.use(cors({
     'https://insightflow-frontend-39727.firebaseapp.com',
     'https://insightflow-frontend-39727.web.app'
   ],
-  credentials:true
+  credentials:true,
+  methods: ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 app.use(express.json());
 
