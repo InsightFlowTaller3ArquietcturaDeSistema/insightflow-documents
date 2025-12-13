@@ -9,7 +9,14 @@ const app = express();
 const PORT = process.env.PORT || 3002;
 
 // Middlewares
-app.use(cors());
+app.use(cors({
+  origin: [
+    'http://localhost:3000',
+    'http://localhost:5173',
+    'https://insightflow-frontend-39727.firebaseapp.com',
+    'https://insightflow-frontend-39727.web.app'
+  ]
+}));
 app.use(express.json());
 
 // Ruta principal
