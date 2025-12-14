@@ -1,0 +1,146 @@
+{
+  "info": {
+    "name": "InsightFlow - Documents Service",
+    "description": "Colección de endpoints para el servicio de documentos",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "https://insightflow-documents-drw9.onrender.com",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/health",
+          "host": ["{{base_url}}"],
+          "path": ["health"]
+        },
+        "description": "Verificar que el servicio está funcionando"
+      }
+    },
+    {
+      "name": "Service Info",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/",
+          "host": ["{{base_url}}"],
+          "path": [""]
+        },
+        "description": "Obtener información del servicio"
+      }
+    },
+    {
+      "name": "Get All Documents",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/documents",
+          "host": ["{{base_url}}"],
+          "path": ["documents"]
+        },
+        "description": "Listar todos los documentos activos"
+      }
+    },
+    {
+      "name": "Create Document",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"workspace_id\": \"workspace-test-001\",\n  \"title\": \"Documento de Prueba\",\n  \"icon\": \"📝\",\n  \"content\": {\n    \"blocks\": [\n      {\n        \"id\": \"block-1\",\n        \"type\": \"heading\",\n        \"content\": \"Titulo Principal\"\n      },\n      {\n        \"id\": \"block-2\",\n        \"type\": \"paragraph\",\n        \"content\": \"Este es un documento de prueba creado desde Postman.\"\n      }\n    ]\n  },\n  \"created_by\": \"user-test-001\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/documents",
+          "host": ["{{base_url}}"],
+          "path": ["documents"]
+        },
+        "description": "Crear un nuevo documento"
+      }
+    },
+    {
+      "name": "Get Document By ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/documents/:id",
+          "host": ["{{base_url}}"],
+          "path": ["documents", ":id"],
+          "variable": [
+            {
+              "key": "id",
+              "value": "",
+              "description": "ID del documento (UUID)"
+            }
+          ]
+        },
+        "description": "Obtener un documento específico por su ID. Reemplaza :id con un UUID válido."
+      }
+    },
+    {
+      "name": "Update Document",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Documento Actualizado\",\n  \"icon\": \"✨\",\n  \"content\": {\n    \"blocks\": [\n      {\n        \"id\": \"block-1\",\n        \"type\": \"heading\",\n        \"content\": \"Titulo Modificado\"\n      },\n      {\n        \"id\": \"block-2\",\n        \"type\": \"paragraph\",\n        \"content\": \"Este documento ha sido actualizado.\"\n      },\n      {\n        \"id\": \"block-3\",\n        \"type\": \"list\",\n        \"content\": \"Item 1|Item 2|Item 3\"\n      }\n    ]\n  }\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/documents/:id",
+          "host": ["{{base_url}}"],
+          "path": ["documents", ":id"],
+          "variable": [
+            {
+              "key": "id",
+              "value": "",
+              "description": "ID del documento a actualizar"
+            }
+          ]
+        },
+        "description": "Actualizar un documento existente. Reemplaza :id con un UUID válido."
+      }
+    },
+    {
+      "name": "Delete Document",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/documents/:id",
+          "host": ["{{base_url}}"],
+          "path": ["documents", ":id"],
+          "variable": [
+            {
+              "key": "id",
+              "value": "",
+              "description": "ID del documento a eliminar"
+            }
+          ]
+        },
+        "description": "Eliminar un documento (soft delete). Reemplaza :id con un UUID válido."
+      }
+    }
+  ]
+}
